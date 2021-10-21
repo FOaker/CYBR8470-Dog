@@ -11,15 +11,18 @@ SIZE_CHOICES = (
 
 # Create your models here.
 class Breed(models.Model):
-    name = models.CharField(max_length=30, choices=SIZE_CHOICES)
-    size = models.IntegerField(default=1, validators=[MaxValueValidator(5), MinValueValidator(1)])
+    name = models.CharField(max_length=30)
+    size = models.CharField(max_length=30, choices=SIZE_CHOICES)
     friendliness = models.IntegerField(default=1, validators=[MaxValueValidator(5), MinValueValidator(1)])
     trainability = models.IntegerField(default=1, validators=[MaxValueValidator(5), MinValueValidator(1)])
     sheddingamount = models.IntegerField(default=1, validators=[MaxValueValidator(5), MinValueValidator(1)])
     exerciseneeds = models.IntegerField(default=1, validators=[MaxValueValidator(5), MinValueValidator(1)])
 
     def __str__(self):
-        return self.name, self.size, self.friendliness, self.trainability, self.sheddingamount, self.exerciseneeds
+        return self.name
+
+    # def __int__(self):
+    #     return self.friendliness, self.trainability, self.sheddingamount, self.exerciseneeds
 
 
 class Dog(models.Model):
@@ -31,5 +34,5 @@ class Dog(models.Model):
     favoritefood = models.CharField(max_length=30)
     favoritetoy = models.CharField(max_length=30)
 
-    def __str__(self):
-        return self.name, self.age, self.breed, self.gender, self.color, self.favoritefood, self.favoritetoy
+    # def __str__(self):
+    #     return self.name, self.age, self.breed, self.gender, self.color, self.favoritefood, self.favoritetoy
