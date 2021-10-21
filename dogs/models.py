@@ -18,6 +18,9 @@ class Breed(models.Model):
     sheddingamount = models.IntegerField(default=1, validators=[MaxValueValidator(5), MinValueValidator(1)])
     exerciseneeds = models.IntegerField(default=1, validators=[MaxValueValidator(5), MinValueValidator(1)])
 
+    def __str__(self):
+        return self.name, self.size, self.friendliness, self.trainability, self.sheddingamount, self.exerciseneeds
+
 
 class Dog(models.Model):
     name = models.CharField(max_length=30)
@@ -27,3 +30,6 @@ class Dog(models.Model):
     color = models.CharField(max_length=30)
     favoritefood = models.CharField(max_length=30)
     favoritetoy = models.CharField(max_length=30)
+
+    def __str__(self):
+        return self.name, self.age, self.breed, self.gender, self.color, self.favoritefood, self.favoritetoy
